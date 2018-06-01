@@ -11,14 +11,15 @@
 |
 */
 
+
 Route::get('/', 'PagesController@home');
 
-Route::get('/about', function(){
-   return view('about');
+Route::get('/about', function () {
+    return view('about');
 });
 
-Route::get('cards','CardsController@index');
-Route::get('cards/{card}','CardsController@show');
+Route::get('cards', 'CardsController@index');
+Route::get('cards/{card}', 'CardsController@show');
 
 
 Route::post('/cards/{card}/notes', 'NotesController@store');
@@ -27,3 +28,8 @@ Route::post('/cards/{card}/notes', 'NotesController@store');
 Route::get('/notes/{note}/edit', 'NotesController@edit');
 //Updates note with a certain ID
 Route::patch('/notes/{note}', 'NotesController@update');
+
+
+Route::auth();
+
+Route::get('/dashboard', 'HomeController@index');

@@ -25,12 +25,21 @@
                 {{ csrf_field() }}
                 {{ method_field('POST') }}
                 <div class="form-group">
-                    <textarea name="body" class="form-control">{{$card->body}}</textarea>
+                    <textarea name="body" class="form-control" required>{{ old('body') }}</textarea>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Add Note</button>
                 </div>
             </form>
+            @if(count($errors))
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{error}}</li>
+                    @endforeach
+                </ul>
+            @endif
+            <!--{{ var_dump($errors) }}-->
+
         </div>
     </div>
 @stop

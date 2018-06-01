@@ -11,10 +11,18 @@ use App\Http\Controllers\Controller;
 class NotesController extends Controller
 {
     public function store(Request $request, Card $card){
-        /*$note = new Note;
-        $note->body = $request->body;
-        $card->notes()->save($note);
-        return redirect()->back();*/
+        //Validate the request
+        $this->validate($request,
+            ['body' => 'required']
+        );
+
+        /* Custom error message:
+        $this->validate($request,
+            ['body' => 'required|min:10'],
+            ['required' => 'Please fill in the :attribute', 'min' => 'The :attribute shoud be of atleast :min characters']
+        );
+        */
+
         $note = new Note($request->all());
         $note->user_id =1;
         $card->addNote($note, 1); //in place of 1 we put $user

@@ -11,7 +11,7 @@ class Card extends Model
         return $this->hasMany('App\Note');
     }
     public function addNote(Note $note, $userID){
-        $note->user_id = $userID;
+        $note->user_id = $userID; //Set id of user to note.
         return $this->notes()->save($note);
     }
 }
