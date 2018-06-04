@@ -10,8 +10,10 @@
 
                     @foreach($cards as $card)
                         <div>
-                            <a class="btn btn-primary col-md-10 col-md-offset-1" href="/cards/{{$card->id}}"> {{$card->title}} </a>
+                            <a class="btn btn-default col-md-10 col-md-offset-1" href="/cards/{{$card->id}}"> {{$card->title}} </a>
+                            <br>
                         </div>
+                        <br>
                     @endforeach
 
 

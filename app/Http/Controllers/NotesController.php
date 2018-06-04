@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Note;
 use App\Card;
 use App\User;
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -30,9 +31,9 @@ class NotesController extends Controller
         */
 
         $note = new Note($request->all());
-        $id= $user -> id;
+        $id= Auth::User() -> id;
         $note->user_id = $id;//hardcoded 1
-        $card->addNote($note, $user->id); //in place of 1 we put $user
+        $card->addNote($note, $id); //in place of 1 we put $user
         return back();
 
 
